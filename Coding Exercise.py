@@ -46,12 +46,18 @@ while True:
     else:
         break
 
+#Counting occurrences of each brand
+
+
 #Inputting into csv file
 with open('data.csv', 'w', newline='') as mycsv:
     writer = csv.writer(mycsv)
     writer.writerow(list_brands)
     writer.writerow(list_avg_rating)
     writer.writerow(list_num_ratings)
+    dict_writer = csv.DictWriter(mycsv, Counter(list_brands).keys())
+    dict_writer.writeheader()
+    dict_writer.writerow(Counter(list_brands))
 
 print(list_brands)
 print(list_avg_rating)
@@ -59,6 +65,7 @@ print(list_num_ratings)
 print(len(list_brands))
 print(len(list_avg_rating))
 print(len(list_num_ratings))
+print(Counter(list_brands))
 
 # print(len(brand_results))
 # print(Counter(brand_results))
